@@ -1,12 +1,12 @@
 # Sharp Memory LCD Kernel Driver
 
-**Note**: I did not write this driver. I only modified it to clean up compiler warnings/errors. The original can be found here:
-(http://www.librecalc.com/en/wp-content/uploads/sites/4/2014/10/sharp.c)
+*This driver is modified from the original to work with 144x168px displays. See the original for 400x240px displays.*
 
-More information can be found here:
-(http://www.librecalc.com/en/downloads/)
+Note: I did not write this driver. I only modified it to clean up compiler warnings/errors. The original can be found [here.](https://web.archive.org/web/20161022170541/http://www.librecalc.com/en/wp-content/uploads/sites/4/2014/10/sharp.c)
 
-This driver is for the LS027B7DH01. It *should* work with other Sharp Mem LCD displays by modifying all 400/240 references with the correct dimensions for your screen.
+More information can be found [here.](https://web.archive.org/web/20180615130834/http://www.librecalc.com/en/downloads/)
+
+This driver is for the LS013B7DH05. It *should* work with other Sharp Mem LCD displays by modifying all 144/168 references with the correct dimensions for your screen.
 
 ## Hookup Guide
 Connect the following pins:
@@ -52,7 +52,7 @@ sharp
 ```
 
 ## Compile/Install the Device Tree Overlay
-The included sharp.dts file is for the Raspberry Pi Zero W. To compile it, run:
+The included sharp.dts file is for the Raspberry Pi Zero W (but also tested working on RPi3B). To compile it, run:
 ```
 dtc -@ -I dts -O dtb -o sharp.dtbo sharp.dts
 ```
@@ -75,6 +75,6 @@ If you want the boot console to show up on the display, you'll need to append `f
 
 To make sure the console fits on screen, uncomment the following lines in /boot/config.txt and set the resolution appropriately:
 ```
-framebuffer_width=400
-framebuffer_height=240
+framebuffer_width=144
+framebuffer_height=168
 ```

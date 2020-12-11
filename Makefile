@@ -6,6 +6,7 @@ all:  modules
 
 modules modules_install clean::
 	@$(MAKE) -C $(KROOT) M=$(shell pwd) $@
+	depmod -A
 
 clean::
 	rm -rf   Module.symvers modules.order
